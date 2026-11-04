@@ -11,9 +11,9 @@ with Path("data/readings.csv").open(encoding="utf-8") as f:  # 블록이 끝나�
         values[sensor].append(float(v))    # 그 센서의 목록에 값(실수)을 추가
 
 # 표 머리글: :<8은 8자리 폭 왼쪽 정렬, :>8은 8자리 폭 오른쪽 정렬
-print(f"{'sensor':<8}{'count':>6}{'min':>8}{'max':>8}{'mean':>8}")
-print("-" * 38)                            # 구분선(빼기 기호 38개)
+print(f"{'sensor':<8}{'count':>6}{'min':>8}{'max':>8}{'mean':>8}{'median':>8}")
+print("-" * 46)                            # 구분선(빼기 기호 38개)
 for sensor in sorted(values):              # 센서 이름순(규칙 4항)
     vs = values[sensor]                    # 그 센서의 측정값 목록
     # 개수·최솟값·최댓값·평균. :>8.2f는 소수 둘째 자리(규칙 3항)
-    print(f"{sensor:<8}{len(vs):>6}{min(vs):>8.2f}{max(vs):>8.2f}{statistics.mean(vs):>8.2f}")
+    print(f"{sensor:<8}{len(vs):>6}{min(vs):>8.2f}{max(vs):>8.2f}{statistics.mean(vs):>8.2f}{statistics.median(vs):>8.2f}")
